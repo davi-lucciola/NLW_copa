@@ -1,0 +1,162 @@
+/*Configurações Gerais*/
+* {
+    /*Removendo Margem (Margin) e Preenchimento Interno (Padding) Padrões do HTML - Ajuda a trabalhar no codigo*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*O width é quem dita o tamanho das caixas, o content que se vire*/
+}
+
+:root {
+    --bg: url(./assets/bg-yellow.svg);
+    --card-color-primary: #F7DD43;
+    --card-h2-color-border: #746615;
+    --card-background-color: #1D1C19;
+}
+
+body.blue {
+    --bg: url(./assets/bg-blue.svg);
+    --card-color-primary: #338AF3;
+    --card-h2-color-border: #338AF3;
+    --card-background-color: #202024;
+}
+
+body.green {
+    --bg: url(./assets/bg-green.svg);
+    --card-color-primary: #047C3F;
+    --card-h2-color-border: #047C3F;
+    --card-background-color: #1a1d1b;
+}
+
+/*Removendo formatação de listas*/
+ul {
+    list-style: none;
+}
+
+body {
+    background: #121214;
+    background-image: var(--bg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+body * {
+    font-family: 'Roboto';
+}
+
+#app {
+    width: fit-content;
+    margin: auto;
+    padding-top: 52px;
+}
+
+header {
+    margin-bottom: 63px;
+    text-align: center;
+}
+
+#cards {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.card {
+    padding: 32px 23px;
+    text-align: center; /*Alinhamento Horizontal de Elementos Inline de um Bloco (Display Block)*/
+    background: var(--card-background-color);
+    border-radius: 6px;
+    border-bottom: 2px solid var(--card-color-primary);
+}
+
+.card h2 {
+    display: flex;
+    gap: 16px; /*Espaçamento entre itens (Display Flex)*/
+    align-items: center; /*Alinhamento Vertical de items (Display Flex)*/
+    justify-content: center; /*Alinhamento Horizontal de Elementos*/
+
+    padding: 8px 16px;
+    border: 1px solid var(--card-h2-color-border);
+    border-radius: 6px;
+
+    width: fit-content;
+    margin-inline: auto;
+    margin-bottom: 53px;
+    
+    color: #F7DD43;
+}
+
+.card h2 span {
+    color: #E1E1E6;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    width: 270px;
+}
+
+.card ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card ul li + li {
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.card ul li strong {
+    font-size: 36px;
+    color: #E1E1E6;
+    font-weight: 900;
+}
+
+.card h2:hover,
+.card ul li strong:hover,
+.card ul li img:hover {
+    transform: scale(1.1);
+}
+
+.card h2
+.card ul li strong,
+.card ul li img {
+    transition: transform 0.3s;
+}
+
+.card {
+    opacity: 0;
+    animation: appear .2s forwards;
+}
+
+.card:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.card:nth-child(3) {
+    animation-delay: .4s;
+}
+
+@keyframes appear {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@media (min-width: 740px) {
+    #cards {
+        max-width: 670px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
